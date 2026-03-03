@@ -1,0 +1,15 @@
+def print_formatted(number):
+ 
+    # Determine the width based on the binary representation of the largest number
+    width = len(bin(number)) - 2
+
+    for i in range(1, number + 1):
+        # Generate the four formats
+        # oct(i) -> '0o...', hex(i) -> '0x...', bin(i) -> '0b...'
+        dec = str(i)
+        octa = oct(i)[2:]
+        hexa = hex(i)[2:].upper()
+        bina = bin(i)[2:]
+
+        # Use f-strings or .rjust() to right-align each value based on 'width'
+        print(f"{dec.rjust(width)} {octa.rjust(width)} {hexa.rjust(width)} {bina.rjust(width)}")
