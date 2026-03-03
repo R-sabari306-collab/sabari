@@ -1,0 +1,22 @@
+import re
+
+def main():
+    pattern = re.compile(
+        r"""^
+        (?! .* (.) .* \1 )         # no repeated chars
+        (?= (?: .* [A-Z] ) {2,} )  # at least 2 upper
+        (?= (?: .* \d   ) {3,} )   # at least 3 digits
+        [A-Za-z0-9]{10}            # exactly 10 alphanumeric chars
+        $""",
+        re.X,
+    )
+
+    for _ in range(int(input())):        
+        if re.fullmatch(pattern, input()) is None:
+            print("Invalid")
+            continue
+        
+        print("Valid")
+
+if __name__ == "__main__":
+    main()
